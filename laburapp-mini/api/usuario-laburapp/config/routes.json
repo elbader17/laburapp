@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/usuario-laburapps",
+      "handler": "usuario-laburapp.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/usuario-laburapps/count",
+      "handler": "usuario-laburapp.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/usuario-laburapps/:id",
+      "handler": "usuario-laburapp.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/usuario-laburapps",
+      "handler": "usuario-laburapp.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/usuario-laburapps/:id",
+      "handler": "usuario-laburapp.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/usuario-laburapps/:id",
+      "handler": "usuario-laburapp.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
