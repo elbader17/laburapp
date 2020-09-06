@@ -1,0 +1,41 @@
+{
+  "kind": "collectionType",
+  "collectionName": "usuario_laburapps",
+  "info": {
+    "name": "usuario_laburapp"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "lastname": {
+      "type": "string"
+    },
+    "direccion": {
+      "type": "string"
+    },
+    "ciudad": {
+      "type": "string"
+    },
+    "provincia": {
+      "type": "string"
+    },
+    "cp": {
+      "type": "integer"
+    },
+    "id_firebase": {
+      "type": "string"
+    },
+    "verificado": {
+      "type": "boolean",
+      "default": false
+    },
+    "TipoUsuarioId": {
+      "type": "biginteger"
+    }
+  }
+}
