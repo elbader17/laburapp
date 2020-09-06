@@ -1,0 +1,901 @@
+type AdminUser {
+  id: ID!
+  username: String
+}
+
+input createOficioInput {
+  data: OficioInput
+}
+
+type createOficioPayload {
+  oficio: Oficio
+}
+
+input createRoleInput {
+  data: RoleInput
+}
+
+type createRolePayload {
+  role: UsersPermissionsRole
+}
+
+input createUserInput {
+  data: UserInput
+}
+
+type createUserPayload {
+  user: UsersPermissionsUser
+}
+
+input createUsuarioLaburappInput {
+  data: UsuarioLaburappInput
+}
+
+type createUsuarioLaburappPayload {
+  usuarioLaburapp: UsuarioLaburapp
+}
+
+"""
+A date string, such as 2007-12-03, compliant with the `full-date` format
+outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for
+representation of dates and times using the Gregorian calendar.
+"""
+scalar Date
+
+"""
+A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the
+`date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO
+8601 standard for representation of dates and times using the Gregorian calendar.
+"""
+scalar DateTime
+
+input deleteOficioInput {
+  where: InputID
+}
+
+type deleteOficioPayload {
+  oficio: Oficio
+}
+
+input deleteRoleInput {
+  where: InputID
+}
+
+type deleteRolePayload {
+  role: UsersPermissionsRole
+}
+
+input deleteUserInput {
+  where: InputID
+}
+
+type deleteUserPayload {
+  user: UsersPermissionsUser
+}
+
+input deleteUsuarioLaburappInput {
+  where: InputID
+}
+
+type deleteUsuarioLaburappPayload {
+  usuarioLaburapp: UsuarioLaburapp
+}
+
+input editFileInput {
+  name: String
+  alternativeText: String
+  caption: String
+  width: Int
+  height: Int
+  formats: JSON
+  hash: String
+  ext: String
+  mime: String
+  size: Float
+  url: String
+  previewUrl: String
+  provider: String
+  provider_metadata: JSON
+  related: [ID]
+  created_by: ID
+  updated_by: ID
+}
+
+input editOficioInput {
+  descripcion: String
+  created_by: ID
+  updated_by: ID
+}
+
+input editRoleInput {
+  name: String
+  description: String
+  type: String
+  permissions: [ID]
+  users: [ID]
+  created_by: ID
+  updated_by: ID
+}
+
+input editUserInput {
+  username: String
+  email: String
+  provider: String
+  password: String
+  resetPasswordToken: String
+  confirmed: Boolean
+  blocked: Boolean
+  role: ID
+  created_by: ID
+  updated_by: ID
+}
+
+input editUsuarioLaburappInput {
+  name: String
+  lastname: String
+  direccion: String
+  ciudad: String
+  provincia: String
+  cp: Int
+  id_firebase: String
+  verificado: Boolean
+  TipoUsuarioId: Int
+  created_by: ID
+  updated_by: ID
+}
+
+input FileInput {
+  name: String!
+  alternativeText: String
+  caption: String
+  width: Int
+  height: Int
+  formats: JSON
+  hash: String!
+  ext: String
+  mime: String!
+  size: Float!
+  url: String!
+  previewUrl: String
+  provider: String!
+  provider_metadata: JSON
+  related: [ID]
+  created_by: ID
+  updated_by: ID
+}
+
+input InputID {
+  id: ID!
+}
+
+"""
+The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+"""
+scalar JSON
+
+"""The `Long` scalar type represents 52-bit integers"""
+scalar Long
+
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | Oficio | OficioConnection | OficioAggregator | OficioGroupBy | OficioConnectionId | OficioConnectionCreated_at | OficioConnectionUpdated_at | OficioConnectionDescripcion | OficioConnectionCreated_by | OficioConnectionUpdated_by | createOficioPayload | updateOficioPayload | deleteOficioPayload | UsuarioLaburapp | UsuarioLaburappConnection | UsuarioLaburappAggregator | UsuarioLaburappAggregatorSum | UsuarioLaburappAggregatorAvg | UsuarioLaburappAggregatorMin | UsuarioLaburappAggregatorMax | UsuarioLaburappGroupBy | UsuarioLaburappConnectionId | UsuarioLaburappConnectionCreated_at | UsuarioLaburappConnectionUpdated_at | UsuarioLaburappConnectionName | UsuarioLaburappConnectionLastname | UsuarioLaburappConnectionDireccion | UsuarioLaburappConnectionCiudad | UsuarioLaburappConnectionProvincia | UsuarioLaburappConnectionCp | UsuarioLaburappConnectionId_firebase | UsuarioLaburappConnectionVerificado | UsuarioLaburappConnectionTipoUsuarioId | UsuarioLaburappConnectionCreated_by | UsuarioLaburappConnectionUpdated_by | createUsuarioLaburappPayload | updateUsuarioLaburappPayload | deleteUsuarioLaburappPayload | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnectionCreated_at | UploadFileConnectionUpdated_at | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | UploadFileConnectionCreated_by | UploadFileConnectionUpdated_by | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | UsersPermissionsRoleConnectionCreated_by | UsersPermissionsRoleConnectionUpdated_by | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionCreated_at | UsersPermissionsUserConnectionUpdated_at | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | UsersPermissionsUserConnectionCreated_by | UsersPermissionsUserConnectionUpdated_by | createUserPayload | updateUserPayload | deleteUserPayload
+
+type Mutation {
+  createOficio(input: createOficioInput): createOficioPayload
+  updateOficio(input: updateOficioInput): updateOficioPayload
+  deleteOficio(input: deleteOficioInput): deleteOficioPayload
+  createUsuarioLaburapp(input: createUsuarioLaburappInput): createUsuarioLaburappPayload
+  updateUsuarioLaburapp(input: updateUsuarioLaburappInput): updateUsuarioLaburappPayload
+  deleteUsuarioLaburapp(input: deleteUsuarioLaburappInput): deleteUsuarioLaburappPayload
+
+  """Create a new role"""
+  createRole(input: createRoleInput): createRolePayload
+
+  """Update an existing role"""
+  updateRole(input: updateRoleInput): updateRolePayload
+
+  """Delete an existing role"""
+  deleteRole(input: deleteRoleInput): deleteRolePayload
+
+  """Create a new user"""
+  createUser(input: createUserInput): createUserPayload
+
+  """Update an existing user"""
+  updateUser(input: updateUserInput): updateUserPayload
+
+  """Delete an existing user"""
+  deleteUser(input: deleteUserInput): deleteUserPayload
+  upload(refId: ID, ref: String, field: String, source: String, file: Upload!): UploadFile!
+  multipleUpload(refId: ID, ref: String, field: String, source: String, files: [Upload]!): [UploadFile]!
+  login(input: UsersPermissionsLoginInput!): UsersPermissionsLoginPayload!
+  register(input: UsersPermissionsRegisterInput!): UsersPermissionsLoginPayload!
+  forgotPassword(email: String!): UserPermissionsPasswordPayload
+  resetPassword(password: String!, passwordConfirmation: String!, code: String!): UsersPermissionsLoginPayload
+  emailConfirmation(confirmation: String!): UsersPermissionsLoginPayload
+}
+
+type Oficio {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  descripcion: String
+  created_by: AdminUser
+  updated_by: AdminUser
+}
+
+type OficioAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type OficioConnection {
+  values: [Oficio]
+  groupBy: OficioGroupBy
+  aggregate: OficioAggregator
+}
+
+type OficioConnectionCreated_at {
+  key: DateTime
+  connection: OficioConnection
+}
+
+type OficioConnectionCreated_by {
+  key: ID
+  connection: OficioConnection
+}
+
+type OficioConnectionDescripcion {
+  key: String
+  connection: OficioConnection
+}
+
+type OficioConnectionId {
+  key: ID
+  connection: OficioConnection
+}
+
+type OficioConnectionUpdated_at {
+  key: DateTime
+  connection: OficioConnection
+}
+
+type OficioConnectionUpdated_by {
+  key: ID
+  connection: OficioConnection
+}
+
+type OficioGroupBy {
+  id: [OficioConnectionId]
+  created_at: [OficioConnectionCreated_at]
+  updated_at: [OficioConnectionUpdated_at]
+  descripcion: [OficioConnectionDescripcion]
+  created_by: [OficioConnectionCreated_by]
+  updated_by: [OficioConnectionUpdated_by]
+}
+
+input OficioInput {
+  descripcion: String
+  created_by: ID
+  updated_by: ID
+}
+
+type Query {
+  oficio(id: ID!): Oficio
+  oficios(sort: String, limit: Int, start: Int, where: JSON): [Oficio]
+  oficiosConnection(sort: String, limit: Int, start: Int, where: JSON): OficioConnection
+  usuarioLaburapp(id: ID!): UsuarioLaburapp
+  usuarioLaburapps(sort: String, limit: Int, start: Int, where: JSON): [UsuarioLaburapp]
+  usuarioLaburappsConnection(sort: String, limit: Int, start: Int, where: JSON): UsuarioLaburappConnection
+  files(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
+  filesConnection(sort: String, limit: Int, start: Int, where: JSON): UploadFileConnection
+  role(id: ID!): UsersPermissionsRole
+
+  """
+  Retrieve all the existing roles. You can't apply filters on this query.
+  """
+  roles(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsRole]
+  rolesConnection(sort: String, limit: Int, start: Int, where: JSON): UsersPermissionsRoleConnection
+  user(id: ID!): UsersPermissionsUser
+  users(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsUser]
+  usersConnection(sort: String, limit: Int, start: Int, where: JSON): UsersPermissionsUserConnection
+  me: UsersPermissionsMe
+}
+
+input RoleInput {
+  name: String!
+  description: String
+  type: String
+  permissions: [ID]
+  users: [ID]
+  created_by: ID
+  updated_by: ID
+}
+
+"""A time string with format: HH:mm:ss.SSS"""
+scalar Time
+
+input updateOficioInput {
+  where: InputID
+  data: editOficioInput
+}
+
+type updateOficioPayload {
+  oficio: Oficio
+}
+
+input updateRoleInput {
+  where: InputID
+  data: editRoleInput
+}
+
+type updateRolePayload {
+  role: UsersPermissionsRole
+}
+
+input updateUserInput {
+  where: InputID
+  data: editUserInput
+}
+
+type updateUserPayload {
+  user: UsersPermissionsUser
+}
+
+input updateUsuarioLaburappInput {
+  where: InputID
+  data: editUsuarioLaburappInput
+}
+
+type updateUsuarioLaburappPayload {
+  usuarioLaburapp: UsuarioLaburapp
+}
+
+"""The `Upload` scalar type represents a file upload."""
+scalar Upload
+
+type UploadFile {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  name: String!
+  alternativeText: String
+  caption: String
+  width: Int
+  height: Int
+  formats: JSON
+  hash: String!
+  ext: String
+  mime: String!
+  size: Float!
+  url: String!
+  previewUrl: String
+  provider: String!
+  provider_metadata: JSON
+  created_by: AdminUser
+  updated_by: AdminUser
+  related(sort: String, limit: Int, start: Int, where: JSON): [Morph]
+}
+
+type UploadFileAggregator {
+  count: Int
+  totalCount: Int
+  sum: UploadFileAggregatorSum
+  avg: UploadFileAggregatorAvg
+  min: UploadFileAggregatorMin
+  max: UploadFileAggregatorMax
+}
+
+type UploadFileAggregatorAvg {
+  width: Float
+  height: Float
+  size: Float
+}
+
+type UploadFileAggregatorMax {
+  width: Float
+  height: Float
+  size: Float
+}
+
+type UploadFileAggregatorMin {
+  width: Float
+  height: Float
+  size: Float
+}
+
+type UploadFileAggregatorSum {
+  width: Float
+  height: Float
+  size: Float
+}
+
+type UploadFileConnection {
+  values: [UploadFile]
+  groupBy: UploadFileGroupBy
+  aggregate: UploadFileAggregator
+}
+
+type UploadFileConnectionAlternativeText {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionCaption {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionCreated_at {
+  key: DateTime
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionCreated_by {
+  key: ID
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionExt {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionFormats {
+  key: JSON
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionHash {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionHeight {
+  key: Int
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionId {
+  key: ID
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionMime {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionName {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionPreviewUrl {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionProvider {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionProvider_metadata {
+  key: JSON
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionSize {
+  key: Float
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionUpdated_at {
+  key: DateTime
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionUpdated_by {
+  key: ID
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionUrl {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionWidth {
+  key: Int
+  connection: UploadFileConnection
+}
+
+type UploadFileGroupBy {
+  id: [UploadFileConnectionId]
+  created_at: [UploadFileConnectionCreated_at]
+  updated_at: [UploadFileConnectionUpdated_at]
+  name: [UploadFileConnectionName]
+  alternativeText: [UploadFileConnectionAlternativeText]
+  caption: [UploadFileConnectionCaption]
+  width: [UploadFileConnectionWidth]
+  height: [UploadFileConnectionHeight]
+  formats: [UploadFileConnectionFormats]
+  hash: [UploadFileConnectionHash]
+  ext: [UploadFileConnectionExt]
+  mime: [UploadFileConnectionMime]
+  size: [UploadFileConnectionSize]
+  url: [UploadFileConnectionUrl]
+  previewUrl: [UploadFileConnectionPreviewUrl]
+  provider: [UploadFileConnectionProvider]
+  provider_metadata: [UploadFileConnectionProvider_metadata]
+  created_by: [UploadFileConnectionCreated_by]
+  updated_by: [UploadFileConnectionUpdated_by]
+}
+
+input UserInput {
+  username: String!
+  email: String!
+  provider: String
+  password: String
+  resetPasswordToken: String
+  confirmed: Boolean
+  blocked: Boolean
+  role: ID
+  created_by: ID
+  updated_by: ID
+}
+
+type UserPermissionsPasswordPayload {
+  ok: Boolean!
+}
+
+input UsersPermissionsLoginInput {
+  identifier: String!
+  password: String!
+  provider: String = "local"
+}
+
+type UsersPermissionsLoginPayload {
+  jwt: String
+  user: UsersPermissionsMe!
+}
+
+type UsersPermissionsMe {
+  id: ID!
+  username: String!
+  email: String!
+  confirmed: Boolean
+  blocked: Boolean
+  role: UsersPermissionsMeRole
+}
+
+type UsersPermissionsMeRole {
+  id: ID!
+  name: String!
+  description: String
+  type: String
+}
+
+type UsersPermissionsPermission {
+  id: ID!
+  type: String!
+  controller: String!
+  action: String!
+  enabled: Boolean!
+  policy: String
+  role: UsersPermissionsRole
+  created_by: AdminUser
+  updated_by: AdminUser
+}
+
+input UsersPermissionsRegisterInput {
+  username: String!
+  email: String!
+  password: String!
+}
+
+type UsersPermissionsRole {
+  id: ID!
+  name: String!
+  description: String
+  type: String
+  created_by: AdminUser
+  updated_by: AdminUser
+  permissions(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsPermission]
+  users(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsUser]
+}
+
+type UsersPermissionsRoleAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type UsersPermissionsRoleConnection {
+  values: [UsersPermissionsRole]
+  groupBy: UsersPermissionsRoleGroupBy
+  aggregate: UsersPermissionsRoleAggregator
+}
+
+type UsersPermissionsRoleConnectionCreated_by {
+  key: ID
+  connection: UsersPermissionsRoleConnection
+}
+
+type UsersPermissionsRoleConnectionDescription {
+  key: String
+  connection: UsersPermissionsRoleConnection
+}
+
+type UsersPermissionsRoleConnectionId {
+  key: ID
+  connection: UsersPermissionsRoleConnection
+}
+
+type UsersPermissionsRoleConnectionName {
+  key: String
+  connection: UsersPermissionsRoleConnection
+}
+
+type UsersPermissionsRoleConnectionType {
+  key: String
+  connection: UsersPermissionsRoleConnection
+}
+
+type UsersPermissionsRoleConnectionUpdated_by {
+  key: ID
+  connection: UsersPermissionsRoleConnection
+}
+
+type UsersPermissionsRoleGroupBy {
+  id: [UsersPermissionsRoleConnectionId]
+  name: [UsersPermissionsRoleConnectionName]
+  description: [UsersPermissionsRoleConnectionDescription]
+  type: [UsersPermissionsRoleConnectionType]
+  created_by: [UsersPermissionsRoleConnectionCreated_by]
+  updated_by: [UsersPermissionsRoleConnectionUpdated_by]
+}
+
+type UsersPermissionsUser {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  username: String!
+  email: String!
+  provider: String
+  confirmed: Boolean
+  blocked: Boolean
+  role: UsersPermissionsRole
+  created_by: AdminUser
+  updated_by: AdminUser
+}
+
+type UsersPermissionsUserAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type UsersPermissionsUserConnection {
+  values: [UsersPermissionsUser]
+  groupBy: UsersPermissionsUserGroupBy
+  aggregate: UsersPermissionsUserAggregator
+}
+
+type UsersPermissionsUserConnectionBlocked {
+  key: Boolean
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionConfirmed {
+  key: Boolean
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionCreated_at {
+  key: DateTime
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionCreated_by {
+  key: ID
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionEmail {
+  key: String
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionId {
+  key: ID
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionProvider {
+  key: String
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionRole {
+  key: ID
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionUpdated_at {
+  key: DateTime
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionUpdated_by {
+  key: ID
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionUsername {
+  key: String
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserGroupBy {
+  id: [UsersPermissionsUserConnectionId]
+  created_at: [UsersPermissionsUserConnectionCreated_at]
+  updated_at: [UsersPermissionsUserConnectionUpdated_at]
+  username: [UsersPermissionsUserConnectionUsername]
+  email: [UsersPermissionsUserConnectionEmail]
+  provider: [UsersPermissionsUserConnectionProvider]
+  confirmed: [UsersPermissionsUserConnectionConfirmed]
+  blocked: [UsersPermissionsUserConnectionBlocked]
+  role: [UsersPermissionsUserConnectionRole]
+  created_by: [UsersPermissionsUserConnectionCreated_by]
+  updated_by: [UsersPermissionsUserConnectionUpdated_by]
+}
+
+type UsuarioLaburapp {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  name: String
+  lastname: String
+  direccion: String
+  ciudad: String
+  provincia: String
+  cp: Int
+  id_firebase: String
+  verificado: Boolean
+  TipoUsuarioId: Int
+  created_by: AdminUser
+  updated_by: AdminUser
+}
+
+type UsuarioLaburappAggregator {
+  count: Int
+  totalCount: Int
+  sum: UsuarioLaburappAggregatorSum
+  avg: UsuarioLaburappAggregatorAvg
+  min: UsuarioLaburappAggregatorMin
+  max: UsuarioLaburappAggregatorMax
+}
+
+type UsuarioLaburappAggregatorAvg {
+  cp: Float
+  TipoUsuarioId: Float
+}
+
+type UsuarioLaburappAggregatorMax {
+  cp: Float
+  TipoUsuarioId: Float
+}
+
+type UsuarioLaburappAggregatorMin {
+  cp: Float
+  TipoUsuarioId: Float
+}
+
+type UsuarioLaburappAggregatorSum {
+  cp: Float
+  TipoUsuarioId: Float
+}
+
+type UsuarioLaburappConnection {
+  values: [UsuarioLaburapp]
+  groupBy: UsuarioLaburappGroupBy
+  aggregate: UsuarioLaburappAggregator
+}
+
+type UsuarioLaburappConnectionCiudad {
+  key: String
+  connection: UsuarioLaburappConnection
+}
+
+type UsuarioLaburappConnectionCp {
+  key: Int
+  connection: UsuarioLaburappConnection
+}
+
+type UsuarioLaburappConnectionCreated_at {
+  key: DateTime
+  connection: UsuarioLaburappConnection
+}
+
+type UsuarioLaburappConnectionCreated_by {
+  key: ID
+  connection: UsuarioLaburappConnection
+}
+
+type UsuarioLaburappConnectionDireccion {
+  key: String
+  connection: UsuarioLaburappConnection
+}
+
+type UsuarioLaburappConnectionId {
+  key: ID
+  connection: UsuarioLaburappConnection
+}
+
+type UsuarioLaburappConnectionId_firebase {
+  key: String
+  connection: UsuarioLaburappConnection
+}
+
+type UsuarioLaburappConnectionLastname {
+  key: String
+  connection: UsuarioLaburappConnection
+}
+
+type UsuarioLaburappConnectionName {
+  key: String
+  connection: UsuarioLaburappConnection
+}
+
+type UsuarioLaburappConnectionProvincia {
+  key: String
+  connection: UsuarioLaburappConnection
+}
+
+type UsuarioLaburappConnectionTipoUsuarioId {
+  key: Int
+  connection: UsuarioLaburappConnection
+}
+
+type UsuarioLaburappConnectionUpdated_at {
+  key: DateTime
+  connection: UsuarioLaburappConnection
+}
+
+type UsuarioLaburappConnectionUpdated_by {
+  key: ID
+  connection: UsuarioLaburappConnection
+}
+
+type UsuarioLaburappConnectionVerificado {
+  key: Boolean
+  connection: UsuarioLaburappConnection
+}
+
+type UsuarioLaburappGroupBy {
+  id: [UsuarioLaburappConnectionId]
+  created_at: [UsuarioLaburappConnectionCreated_at]
+  updated_at: [UsuarioLaburappConnectionUpdated_at]
+  name: [UsuarioLaburappConnectionName]
+  lastname: [UsuarioLaburappConnectionLastname]
+  direccion: [UsuarioLaburappConnectionDireccion]
+  ciudad: [UsuarioLaburappConnectionCiudad]
+  provincia: [UsuarioLaburappConnectionProvincia]
+  cp: [UsuarioLaburappConnectionCp]
+  id_firebase: [UsuarioLaburappConnectionId_firebase]
+  verificado: [UsuarioLaburappConnectionVerificado]
+  TipoUsuarioId: [UsuarioLaburappConnectionTipoUsuarioId]
+  created_by: [UsuarioLaburappConnectionCreated_by]
+  updated_by: [UsuarioLaburappConnectionUpdated_by]
+}
+
+input UsuarioLaburappInput {
+  name: String
+  lastname: String
+  direccion: String
+  ciudad: String
+  provincia: String
+  cp: Int
+  id_firebase: String
+  verificado: Boolean
+  TipoUsuarioId: Int
+  created_by: ID
+  updated_by: ID
+}
